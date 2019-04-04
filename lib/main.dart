@@ -13,7 +13,7 @@ import 'mypage_file/my_create.dart';
 import 'mypage_file/settings.dart';
 import 'page/idea_file/message.dart';
 import 'page/notification_file/notification_settings.dart';
-import '';
+import 'page/idea_file/idea_edit.dart';
 
 void main() => runApp(
   new MaterialApp(
@@ -30,6 +30,7 @@ void main() => runApp(
       '/search':(context)=>SearchPage(),
       '/message':(context)=>MessagePage(),
       '/notification_settings':(context)=>NotificationSettingsPage(),
+      '/idea_edit':(context)=>IdeaEditPage(),
     },
     theme: _buildZhiHuTheme(),
   )
@@ -40,6 +41,7 @@ ThemeData _buildZhiHuTheme(){
   return base.copyWith(
     //紫色 高贵色 力量感 象征知识就是就是力量 知识是高贵的
     primaryColor: Colors.deepPurple,
+    accentColor: Colors.green,//控制FloatingActionButton的颜色
     scaffoldBackgroundColor: Colors.grey.shade100,
     buttonTheme: base.buttonTheme.copyWith(
       buttonColor: Colors.lightGreen,

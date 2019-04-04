@@ -19,7 +19,7 @@ class IdeaEditPageState extends State<IdeaEditPage>{
           IconButton(
             icon: Icon(Icons.send),
             onPressed: (){
-              print("");
+              print("向服务器传输想法数据");
             },
           )
         ],
