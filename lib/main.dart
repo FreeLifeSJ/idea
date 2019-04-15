@@ -14,7 +14,12 @@ import 'mypage_file/settings.dart';
 import 'page/idea_file/message.dart';
 import 'page/notification_file/notification_settings.dart';
 import 'page/idea_file/idea_edit.dart';
-
+//TODO:建立Github分支
+//TODO:建立index.dart文件 避免过多import
+//TODO:进行网络功能类的定义和封装
+//TODO:定义相关实体，编写和后台数据交流的接口
+//TODO:重新规划项目文件结构
+//TODO:设置可以切换不同主题的功能
 void main() => runApp(
   new MaterialApp(
     title: "gaozhongzhihu",
