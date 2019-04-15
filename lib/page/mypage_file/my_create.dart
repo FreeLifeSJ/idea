@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'my_create_file/my_draft.dart';
-import 'my_create_file/my_answer.dart';
-import 'my_create_file/my_question.dart';
-import 'my_create_file/my_idea.dart';
+import 'package:gaozhongzhihu/page/mypage_file/my_create_file/my_draft.dart';
+import 'package:gaozhongzhihu/page/mypage_file/my_create_file/my_answer.dart';
+import 'package:gaozhongzhihu/page/mypage_file/my_create_file/my_question.dart';
+import 'package:gaozhongzhihu/page/mypage_file/my_create_file/my_idea.dart';
 
 class MyCreatePage extends StatefulWidget{
 

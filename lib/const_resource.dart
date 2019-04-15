@@ -1,4 +1,4 @@
-import 'post.dart';
+
 List<String>  postTitleList = const [
   "男生如何在恋爱中表现的更成熟可靠？",
   "如何理解「中国是发达国家的粉碎机」这一说法？",

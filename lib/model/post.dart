@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class Post{
   String _title;
@@ -6,5 +5,4 @@ class Post{
   int _supportNum;
   int _commentNum;
   Post(this._title,this._content,this._supportNum,this._commentNum);
-
 }

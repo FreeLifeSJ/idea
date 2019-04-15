@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import 'page/shouye.dart';
-import 'page/idea.dart';
-import 'page/university.dart';
-import 'page/imform.dart';
-import 'page/mypage.dart';
-import 'ask.dart';
-import 'login.dart';
-import 'search.dart';
-import 'mypage_file/my_favorite.dart';
-import 'mypage_file/my_concern.dart';
-import 'mypage_file/my_create.dart';
-import 'mypage_file/settings.dart';
-import 'page/idea_file/message.dart';
-import 'page/notification_file/notification_settings.dart';
-import 'page/idea_file/idea_edit.dart';
-//TODO:建立Github分支
-//TODO:建立index.dart文件 避免过多import
+import 'page/index.dart';
+import 'page/mypage_file/index.dart';
+import 'page/notification_file/index.dart';
+import 'page/idea_file/index.dart';
+//TODO:建立Github分支  已ok
+//TODO:建立index.dart文件 避免过多import  已ok
 //TODO:进行网络功能类的定义和封装
 //TODO:定义相关实体，编写和后台数据交流的接口
 //TODO:重新规划项目文件结构
