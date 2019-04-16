@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
-
+Dio dio = new Dio();  //在其他的文件里面能用吗？
 class LoginPage extends StatefulWidget {
   @override
   State createState() {
@@ -57,7 +58,7 @@ class LoginPageState extends State<LoginPage>{
             RaisedButton(
               child: Text("登录"),
               onPressed: (){
-                print("需要编写向服务器发送请求的代码");
+                login();
                 Navigator.pop(context);//为什么不需要传入
               },
             ),
@@ -65,11 +66,32 @@ class LoginPageState extends State<LoginPage>{
               child: Text("注册"),
               onPressed: (){
                 print("需要编写向服务器传输数据的代码");
+                register();
               },
             )
           ],
         )
       ],
     );
+  }
+
+  void login() async{
+    String username = _userNameController.text;
+    String password = _passwordController.text;
+    print(username);
+    print(password);
+    Map<String,String> data = {"username":username,"password":password};
+    String uri="";
+    try{
+      Response response = await dio.post(uri,data:data);
+      print(response.statusCode);
+    }catch(e){
+      print(e);
+    }
+  }
+
+
+  void register(){
+
   }
 }

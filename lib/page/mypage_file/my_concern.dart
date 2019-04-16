@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gaozhongzhihu/page/mypage_file/my_concern_file/concer_user.dart';
-import 'package:gaozhongzhihu/page/mypage_file/my_concern_file/concern_question.dart';
+import 'my_concern_file/concer_user.dart';
+import 'my_concern_file/concern_question.dart';
 
 class MyConcernPage extends StatefulWidget{
 
