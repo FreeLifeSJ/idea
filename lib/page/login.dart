@@ -80,10 +80,14 @@ class LoginPageState extends State<LoginPage>{
     String password = _passwordController.text;
     print(username);
     print(password);
-    Map<String,String> data = {"username":username,"password":password};
-    String uri="";
+    Map<String,String> data = {"username":username,"password":password}; 
+    String uri="http://kahula.cn/myWeb/signup.php"; //不要忘记加上http
     try{
-      Response response = await dio.post(uri,data:data);
+      Response response = await dio.post(uri,data:{"username":username,"password":password});
+     // Response response = await dio.request(uri,data: {"username":username,"password":password});
+     // Response response = await dio.get(uri,queryParameters: {"username":username,"password":password});
+      //Response response = await dio.get(uri);
+      print(response.data);
       print(response.statusCode);
     }catch(e){
       print(e);
