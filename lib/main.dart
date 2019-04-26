@@ -3,6 +3,8 @@ import 'page/index.dart';
 import 'page/mypage_file/index.dart';
 import 'page/notification_file/index.dart';
 import 'page/idea_file/index.dart';
+import 'page/livepage.dart';
+import 'page/bookstorepage.dart';
 //TODO:建立Github分支  已ok
 //TODO:建立index.dart文件 避免过多import  已ok
 //TODO:进行网络功能类的定义和封装
@@ -25,6 +27,8 @@ void main() => runApp(
       '/message':(context)=>MessagePage(),
       '/notification_settings':(context)=>NotificationSettingsPage(),
       '/idea_edit':(context)=>IdeaEditPage(),
+      '/live' :(context)=>LivePage(),
+      '/bookstore' :(context)=>BookStorePage(),
     },
     theme: _buildZhiHuTheme(),
   )
