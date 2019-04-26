@@ -42,3 +42,48 @@ List<String> headUrls =const[
 List<int> supportsnum = const[1000,2001,1997,2019,300,4009,4563];
 
 List<int> commentsnum = const[50,200,30,34,55,66,286];
+
+
+List<String> ideaContents = const[
+  "大连的天气特别秀，快要春天了还下雪,我也是醉了",
+  "不敢看银行账户余额数字的是成年人，不敢看成绩单数字的是学生，两个都不敢看的是大学生。",
+  "有些话，只说给懂的人听，比如英语听力考试。",
+  "高中早恋，被班主任叫到办公室各种批评教育规劝，我淡定的说我们是真爱，转身走了。昨天带老婆孩子逛街碰到了当年的班主任，激动的打招呼。班主任瞅了瞅我媳妇，说：你的真爱呢？转身走了。",
+  "大学时不喜欢读书，跟上铺的哥们说，我最羡慕那些徒步旅行的驴友，想去那里就去那，真想来一次说走就走的徒步旅行，只可惜自己没钱买装备。上铺那哥们表示，他可以友情赞助我装备。然后，送给我一个碗。。。",
+  "一个高中理科生，受韩寒、郭敬明等人的启发，放弃理科，决心靠写小说致富。第一部小说写了三章之后被父母发现，被迫中止。哦，对了，这部小说叫《霸道寝室长爱上我》。",
+  "临毕业，一女生在食堂门口卖书并大字写到：买书送学姐啦。一学弟假装翻书顺便问到：买书真的可以送学姐吗？学姐回答：是的，明晚8点火车，记得来送学姐啊！",
+  "同学手机掉地上了，其中夹杂着兜里的几个硬币。。。旁边一路人看到后说：哎呦，看人家，连电话费都摔出来了。。。",
+];
+
+List<String> ideaHeadUrl = const[
+  "images/userimage.jpg",
+  "images/skytiger.png",
+  "images/mosthandsome.png",
+  "images/duanyou.png",
+  "images/skytiger.png",
+  "images/duanyou.png",
+  "images/beatifulgirl.png",
+  "images/duanyou.png",
+];
+
+List<String> ideaUserName = const[
+  "FreeLife",
+  "大学一哥",
+  "老帅",
+  "段友出征",
+  "大学一哥",
+  "段友出征",
+  "老美",
+  "段友出征",
+];
+
+List<int> ideaPraisesNum = const[5,7,8,9,12,4,5,23,];
+List<int> ideaCommentsNum = const[2,1,3,3,2,3,1,1];
+
+
+List<String> commentContents = const[
+  "Good job",
+  "干的漂亮",
+  "二营长，老子的意大利炮呢",
+  "校医务室啥时候能添副好的拐"
+];

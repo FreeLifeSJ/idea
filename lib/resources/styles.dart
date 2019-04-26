@@ -44,8 +44,10 @@ class Gaps{
   static SizedBox hGap5 = SizedBox(width: Dimens.gap_dp5,);
   static SizedBox hGap10 = SizedBox(width: Dimens.gap_dp10,);
   static SizedBox hGap15 = SizedBox(width: Dimens.gap_dp15,);
+  static SizedBox hGap3 = SizedBox(width: Dimens.gap_dp3);
 
   static SizedBox vGap5 = SizedBox(height: Dimens.gap_dp5,);
   static SizedBox vGap10 = SizedBox(height: Dimens.gap_dp10,);
   static SizedBox vGap15 = SizedBox(height: Dimens.gap_dp15,);
+  static SizedBox vGap16 = SizedBox(height: Dimens.gap_dp16,);
 }

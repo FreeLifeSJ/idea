@@ -25,6 +25,9 @@ class Idea{
   String head_url;
 
   Idea({@required this.idea_id,this.author_id,this.content,@required this.user_name,
-  this.comments_num=0,this.praise_num=0,this.forwarded_num,@required this.create_time});
+  this.comments_num=0,this.praise_num=0,this.forwarded_num,@required this.create_time,
+  this.head_url});
+
+  Idea.fromResource({this.head_url,this.user_name,this.content,this.praise_num,this.comments_num});
 
 }

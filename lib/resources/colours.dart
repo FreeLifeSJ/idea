@@ -6,4 +6,7 @@ class Colours{
   static Color text_gray = Color(0xFF999999);
 
   static Color divider = Color(0xFFe5e5e5);
+  static Color dividerDark = Colors.grey.shade400;
+
+  static Color iconColorGrey = Colors.grey.shade600;
 }
