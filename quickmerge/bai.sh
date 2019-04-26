@@ -1,3 +1,4 @@
+echo == merge code to develop begin ==
 # 先切换到开发分支并更新
 git checkout develop
 git pull
