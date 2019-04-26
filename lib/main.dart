@@ -3,6 +3,7 @@ import 'page/index.dart';
 import 'page/mypage_file/index.dart';
 import 'page/notification_file/index.dart';
 import 'page/idea_file/index.dart';
+import 'page/splash_page.dart';
 //TODO:建立Github分支  已ok
 //TODO:建立index.dart文件 避免过多import  已ok
 //TODO:进行网络功能类的定义和封装
@@ -12,10 +13,11 @@ import 'page/idea_file/index.dart';
 void main() => runApp(
   new MaterialApp(
     title: "gaozhongzhihu",
-    home: HomePage(),
-    initialRoute: '/login',
+    home: SplashPage(),
+    //initialRoute: '/login',  不采用一进app就要求登录的方式 将SplashPage作为HomePage 然后进行代替
     routes: {
       '/login':(context)=>LoginPage(),
+      'homepage':(context)=>HomePage(),
       '/my_favorite':(context)=>MyFavoritePage(),
       '/my_concern':(context)=>MyConcernPage(),
       '/my_create':(context)=>MyCreatePage(),
