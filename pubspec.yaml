@@ -18,7 +18,7 @@ dependencies:
   dio: ^2.1.0
   #Dart常用工具类库 https://github.com/Sky24n/common_utils
   common_utils: ^1.1.1
- # shared_preferences: ^0.5.2
+  shared_preferences: ^0.5.2
 
 
   # The following adds the Cupertino Icons font to your application.

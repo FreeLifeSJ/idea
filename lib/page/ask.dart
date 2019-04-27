@@ -8,6 +8,16 @@ class AskPage extends StatelessWidget{
       appBar: AppBar(
         title: Text("提问"),
       ),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody(){
+    return TextField(
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: "输入问题并以问号结尾"
+      ),
     );
   }
 }

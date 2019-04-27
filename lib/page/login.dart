@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gaozhongzhihu/resources/storage_key.dart';
 
 Dio dio = new Dio();  //在其他的文件里面能用吗？
 class LoginPage extends StatefulWidget {
@@ -76,6 +78,8 @@ class LoginPageState extends State<LoginPage>{
   }
 
   void login() async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.setBool(StorageKey.isLogin, true);
     String username = _userNameController.text;
     String password = _passwordController.text;
     print(username);
@@ -89,6 +93,9 @@ class LoginPageState extends State<LoginPage>{
       //Response response = await dio.get(uri);
       print(response.data);
       print(response.statusCode);
+      //TODO:加上判断 状态码是OK的话将isLogin设置成true
+      /*SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences.setBool(StorageKey.isLogin, true);*/
     }catch(e){
       print(e);
     }

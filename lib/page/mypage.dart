@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gaozhongzhihu/resources/storage_key.dart';
+import 'mypage_file/edit_personal_profile.dart';
 
-class MyPage extends StatelessWidget{
+class MyPage extends StatefulWidget {
+  @override
+  _MyPageState createState() => _MyPageState();
+}
+
+class _MyPageState extends State<MyPage> {
+  bool isLogin = false;
+  SharedPreferences sharedPreferences;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return ListView(
       children: <Widget>[
         Card(
-          margin: EdgeInsets.only(top: 15),
-          elevation: 2,
-          child:ListTile(
-            leading: Icon(Icons.person_pin,color: Colors.deepPurpleAccent,),
-            title: Text("神棍骚猴"),
-            subtitle: Text("修改个人资料"),
-          )
+            margin: EdgeInsets.only(top: 15),
+            elevation: 2,
+            child:ListTile(
+              leading: isLogin?CircleAvatar(backgroundImage: AssetImage("images/avatar4.jpg"),radius: 18,):
+              Icon(Icons.person_pin,color: Colors.deepPurpleAccent,),
+              title: Text(isLogin?"神棍骚猴":"未登录"),
+              subtitle: isLogin?Text("修改个人资料"):null,
+              onTap: _personTileOnTap,
+            )
         ),
         Card(
           margin: EdgeInsets.only(top: 10),
@@ -107,7 +118,30 @@ class MyPage extends StatelessWidget{
       ],
     );
   }
+
+  @override
+  void initState() {
+    super.initState();
+    _initAsync();
+
+  }
+
+  void _initAsync() async{
+    sharedPreferences = await SharedPreferences.getInstance();
+    isLogin = sharedPreferences.get(StorageKey.isLogin)??false;
+    print(isLogin.toString());
+  }
+
+  void _personTileOnTap(){
+    if(isLogin){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>EditPersonalProfilePage()));
+    }else{
+      Navigator.pushNamed(context, '/login');
+    }
+  }
 }
+
+
 
 /*
 class CardItem extends StatelessWidget{

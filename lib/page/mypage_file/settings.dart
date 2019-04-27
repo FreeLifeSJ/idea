@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gaozhongzhihu/resources/storage_key.dart';
 
 class SettingsPage extends StatefulWidget{
 
@@ -74,18 +76,27 @@ class SettingsPageState extends State<SettingsPage>{
           ),
           Column(
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 10,bottom: 100),
-                child: Text("退出帐号",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 17
-                  ),),
+              GestureDetector(
+                onTap:_exit ,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10,bottom: 100),
+                  child: Text("退出帐号",
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 17
+                    ),),
+                ),
               )
             ],
           )
         ],
       ),
     );
+  }
+
+  void _exit() async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.setBool(StorageKey.isLogin, false);
+    Navigator.pop(context);  //用这句代码触发不了myPageUI的重新绘制
   }
 }
