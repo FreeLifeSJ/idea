@@ -2,7 +2,22 @@ import 'package:flutter/material.dart';
 import '../style/gsy_style.dart';
 
 class BookView extends StatelessWidget {
-  BookView() : super();
+
+  final String b_title;
+  final String b_author;
+  final String b_summary;
+  final String b_cost;
+  final String b_grade;
+  final String b_view;
+
+  BookView(
+    {@required this.b_title,
+    @required this.b_author,
+    @required this.b_summary,
+    @required this.b_cost,
+    @required this.b_grade,
+    @required this.b_view}
+  );
 
   ///返回书籍卡片
   _getBookItem() {
@@ -27,7 +42,7 @@ class BookView extends StatelessWidget {
               width: 250.0,
               height: 25.0,
               child: new Text(
-                ' 标题：' + '失踪的孩子',
+                ' 标题：' + b_title,
                 style: new TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
@@ -40,7 +55,7 @@ class BookView extends StatelessWidget {
               width: 250.0,
               height: 25,
               child: new Text(
-                ' 作者：' + '埃莱娜·费兰特',
+                ' 作者：' +  b_author,
                 // softWrap: false,
                 overflow: TextOverflow.ellipsis,
                 style: new TextStyle(
@@ -54,8 +69,7 @@ class BookView extends StatelessWidget {
               width: 250.0,
               height: 25,
               child: new Text(
-                ' 简介：' +
-                    '《失踪的孩子》是“那不勒斯四部曲”的第四部，小说聚焦了莉拉和埃莱娜（“我”）的壮年和晚年，为她们持续...',
+                ' 简介：' + b_summary,
                 // softWrap: false,
                 overflow: TextOverflow.ellipsis,
                 style: new TextStyle(
@@ -138,9 +152,9 @@ class BookView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       //crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        _getBottomItem(Colors.grey,'阅读：'"99+"),
-                        _getBottomItem(Colors.grey, '评分：'+"9.2"),
-                        _getBottomItem(Colors.red, '价格：'+"￥62.00"),
+                        _getBottomItem(Colors.grey,'阅读：'+ b_view),
+                        _getBottomItem(Colors.grey, '评分：'+ b_grade),
+                        _getBottomItem(Colors.red, '价格：'+ b_cost),
                       ],
                     ),
                   ],
