@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import '../widgets/swiper_bai.dart';
 
 class UniversityPage extends StatelessWidget {
@@ -49,8 +50,8 @@ class PageContentState extends State<PageContent> {
 
     // 实现 2. part one
     // 创建一个颜色自选，包含一个Icon、icon'sText 和 Text 的 Widget 列
-    GestureDetector buildButtonPress(
-        IconData icon, String iconText, String label, Color color, String routePath) {
+    GestureDetector buildButtonPress(IconData icon, String iconText,
+        String label, Color color, String routePath) {
       // Color color = Theme.of(context).primaryColor;
       return new GestureDetector(
         onTap: () {
@@ -107,7 +108,8 @@ class PageContentState extends State<PageContent> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // 三个按钮块，两个分割线
-          buildButtonPress(Icons.offline_bolt, 'Live', '互动分享会', Colors.blue, '/live'),
+          buildButtonPress(
+              Icons.offline_bolt, 'Live', '互动分享会', Colors.blue, '/live'),
           SizedBox(
             height: 50,
             width: 2,
@@ -115,8 +117,8 @@ class PageContentState extends State<PageContent> {
               color: Colors.grey.shade200,
             ),
           ),
-          buildButtonPress(
-              Icons.collections_bookmark, '书店', '精品电子书', Colors.green, '/bookstore'),
+          buildButtonPress(Icons.collections_bookmark, '书店', '精品电子书',
+              Colors.green, '/bookstore'),
           SizedBox(
             height: 50,
             width: 2,
@@ -124,8 +126,8 @@ class PageContentState extends State<PageContent> {
               color: Colors.grey.shade200,
             ),
           ),
-          buildButtonPress(
-              Icons.monetization_on, '付费咨询', '精品电子书', Colors.deepPurpleAccent, '/bookstore'),
+          buildButtonPress(Icons.monetization_on, '付费咨询', '精品电子书',
+              Colors.deepPurpleAccent, '/bookstore'),
         ],
       ),
     );
@@ -330,15 +332,7 @@ class PageContentState extends State<PageContent> {
               color: Colors.grey.shade200,
             ),
           ),
-          // 第二行内容，ListView 水平滑动可显示优惠内容
-          SizedBox(
-            // 代开发填充
-            height: 150,
-            width: 400,
-            child: Container(
-              color: Colors.deepOrangeAccent,
-            ),
-          ),
+          // 第二行内容，ListView 构建10个优惠内容
         ],
       ),
     );
@@ -405,7 +399,7 @@ class PageContentState extends State<PageContent> {
             Navigator.pushNamed(context, '/learning');
           },
         ),
-                // 分隔
+        // 分隔
         SizedBox(
           height: 10,
           child: Container(

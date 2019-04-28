@@ -12,9 +12,14 @@ class _LivePageState extends State<LivePage> {
       appBar: new AppBar(
         title: new Text('Live'),
       ),
-      body: new Center (
-        child: new Text('Welcome to Live ... 施工中'),
-      )
+      body: new ListView.builder(
+        itemBuilder: (context, index) {
+          return new ListTile(
+            title: new Text('Welcome to Live ... 施工中'),
+          );
+        },
+        itemCount: 20,
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/bookview.dart';
 
 class BookStorePage extends StatefulWidget {
   @override
@@ -10,10 +11,13 @@ class _BookStorePageState extends State<BookStorePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: new Text('BookStore'),
+        title: new Text('知乎书店'),
       ),
-      body: new Center (
-        child: new Text('Welcome to BookSotre ... 施工中'),
+      body: new ListView.builder(
+        itemBuilder: (context, index) {
+          return new BookView();
+        },
+        itemCount: 10,
       )
     );
   }
