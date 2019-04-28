@@ -399,7 +399,12 @@ class PageContentState extends State<PageContent> {
             color: Colors.grey.shade200,
           ),
         ),
-        alreadyLearnSection, // 3.5
+        new GestureDetector(
+          child: alreadyLearnSection, // 3.5
+          onTap: () {
+            Navigator.pushNamed(context, '/learning');
+          },
+        ),
                 // 分隔
         SizedBox(
           height: 10,
@@ -407,7 +412,12 @@ class PageContentState extends State<PageContent> {
             color: Colors.grey.shade200,
           ),
         ),
-        alreadyBoughtSection, // 3.
+        new GestureDetector(
+          child: alreadyBoughtSection, // 3.,
+          onTap: () {
+            Navigator.pushNamed(context, '/alreadybought');
+          },
+        ),
         // 分隔
         SizedBox(
           height: 10,
