@@ -3,8 +3,8 @@ import 'page/index.dart';
 import 'page/mypage_file/index.dart';
 import 'page/notification_file/index.dart';
 import 'page/idea_file/index.dart';
-import 'page/livepage.dart';
-import 'page/bookstorepage.dart';
+import 'page/university_file/livepage.dart';
+import 'page/university_file/bookstorepage.dart';
 //TODO:建立Github分支  已ok
 //TODO:建立index.dart文件 避免过多import  已ok
 //TODO:进行网络功能类的定义和封装
