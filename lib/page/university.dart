@@ -22,7 +22,7 @@ class PageContent extends StatefulWidget {
 //  2. 按钮部分（Live、书店、付费咨询）
 //     每行3个 child
 //        每列2个 child
-//  3. 已购内容
+//  3. 已购内容 按此模板 复制出 学习记录
 //  4. 今日优惠
 //  5. Live 猜你喜欢
 class PageContentState extends State<PageContent> {
@@ -204,6 +204,79 @@ class PageContentState extends State<PageContent> {
         ],
       ),
     );
+    // 学习记录
+    Widget alreadyLearnSection = new Container(
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          SizedBox(
+            height: 20,
+          ), // 白色填充
+          new Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // part one
+              new Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ), // Row 内白色填充
+                  new Icon(Icons.book, color: Colors.blue.shade300),
+                  SizedBox(
+                    width: 20,
+                  ), // Row 内白色填充
+                  new Text(
+                    '学习记录',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+              // part two
+              new Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  //SizedBox(width: 20,), // Row 内白色填充
+                  new Icon(Icons.keyboard_arrow_right, color: Colors.grey),
+                  SizedBox(
+                    width: 20,
+                  ), // Row 内白色填充
+                ],
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ), // 白色填充
+          // 分隔
+          SizedBox(
+            height: 3,
+            child: Container(
+              color: Colors.grey.shade200,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ), // 白色填充
+          new Text(
+            '展示一条学习记录',
+            style: new TextStyle(
+              color: Colors.grey[500],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ), // 白色填充
+        ],
+      ),
+    );
     // 实现 4
     Widget todaySpecial = new Container(
       child: new Column(
@@ -320,6 +393,14 @@ class PageContentState extends State<PageContent> {
         new SwiperWidget(),
         buttonSection, // 2.
         // 分隔
+        SizedBox(
+          height: 10,
+          child: Container(
+            color: Colors.grey.shade200,
+          ),
+        ),
+        alreadyLearnSection, // 3.5
+                // 分隔
         SizedBox(
           height: 10,
           child: Container(
