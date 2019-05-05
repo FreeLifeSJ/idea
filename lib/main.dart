@@ -3,11 +3,18 @@ import 'page/index.dart';
 import 'page/mypage_file/index.dart';
 import 'page/notification_file/index.dart';
 import 'page/idea_file/index.dart';
+<<<<<<< HEAD
 import 'page/splash_page.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'state_manange/redux.dart';
 import 'package:gaozhongzhihu/resources/resources_index.dart';
+=======
+import 'page/university_file/livepage.dart';
+import 'page/university_file/bookstorepage.dart';
+import 'page/university_file/alreadyboughtpage.dart';
+import 'page/university_file/studylogpage.dart';
+>>>>>>> e5117f4ee8924771dc30a5e924b1848db287b02a
 //TODO:建立Github分支  已ok
 //TODO:建立index.dart文件 避免过多import  已ok
 //TODO:进行网络功能类的定义和封装
@@ -15,7 +22,32 @@ import 'package:gaozhongzhihu/resources/resources_index.dart';
 //TODO:重新规划项目文件结构
 //TODO:设置可以切换不同主题的功能
 void main() => runApp(
+<<<<<<< HEAD
   MyApp()
+=======
+  new MaterialApp(
+    title: "gaozhongzhihu",
+    home: HomePage(),
+    initialRoute: '/login',
+    routes: {
+      '/login':(context)=>LoginPage(),
+      '/my_favorite':(context)=>MyFavoritePage(),
+      '/my_concern':(context)=>MyConcernPage(),
+      '/my_create':(context)=>MyCreatePage(),
+      '/settings':(context)=>SettingsPage(),
+      '/ask':(context)=>AskPage(),
+      '/search':(context)=>SearchPage(),
+      '/message':(context)=>MessagePage(),
+      '/notification_settings':(context)=>NotificationSettingsPage(),
+      '/idea_edit':(context)=>IdeaEditPage(),
+      '/live' :(context)=>LivePage(),
+      '/bookstore' :(context)=>BookStorePage(),
+      '/alreadybought' :(context)=>ABPage(),
+      '/learning' :(context)=>StudyLogPage(),
+    },
+    theme: _buildZhiHuTheme(),
+  )
+>>>>>>> e5117f4ee8924771dc30a5e924b1848db287b02a
 );
 
 class MyApp extends StatefulWidget{

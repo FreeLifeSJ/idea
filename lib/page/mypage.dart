@@ -67,21 +67,33 @@ class _MyPageState extends State<MyPage> {
               ListTile(
                 leading: Icon(Icons.shopping_basket,color: Colors.yellow,),
                 title:Text("已购内容"),//这个是不是要删掉？和下面的Live和书店内容重合
+                onTap: () {
+                  Navigator.pushNamed(context, '/alreadybought');
+                },
               ),
               Divider(color: Colors.grey,height: 0,indent: 70,),
               ListTile(
                 leading: Icon(Icons.flash_on,color: Colors.blue,),
                 title: Text("我的Live"),
+                onTap: () {
+                  Navigator.pushNamed(context, '/live');
+                },
               ),
               Divider(color: Colors.grey,height: 0,indent: 70,),
               ListTile(
                 leading: Icon(Icons.collections_bookmark,color:Colors.green),
                 title: Text("我的书店"),
+                onTap: () {
+                  Navigator.pushNamed(context, '/bookstore');
+                },
               ),
               Divider(color: Colors.grey,height: 0,indent: 70,),
               ListTile(
                 leading: Icon(Icons.receipt,color: Colors.red,),
                 title: Text("学习记录"),
+                onTap: () {
+                  Navigator.pushNamed(context, '/learning');
+                },
               ),
               Divider(color: Colors.grey,height: 0,indent: 70,),
               ListTile(
