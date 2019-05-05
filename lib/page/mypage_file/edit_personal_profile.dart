@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gaozhongzhihu/resources/resources_index.dart';
 
-class EditPersonalProfilePage extends StatelessWidget{
+//这个类必须是一个有状态的 否则在文本框输入数据后点确认后就没了 ui显示不出来
+class EditPersonalProfilePage extends StatefulWidget{
+
+  @override
+  State createState() {
+    return _EditPersonalProfilePageState();
+  }
+}
+
+class _EditPersonalProfilePageState extends State<EditPersonalProfilePage>{
   TextEditingController _nameController = TextEditingController();
   TextEditingController _descriptionController = TextEditingController();
   TextEditingController _introductionController = TextEditingController();
   TextEditingController _businessController = TextEditingController();
+  bool isCheck = true;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -54,11 +64,11 @@ class EditPersonalProfilePage extends StatelessWidget{
       padding: EdgeInsets.all(16),
       child: Column(
         children: <Widget>[
-          _editItem(iconData: Icons.person,labeltext: "用户名",controller: _nameController,),
+          _EditItem(iconData: Icons.person,labeltext: "用户名",controller: _nameController,),
           _buildCheckBoxRow(),
-          _editItem(iconData: Icons.format_quote,labeltext: "一句话描述自己",controller: _descriptionController,),
-          _editItem(iconData: Icons.assignment,labeltext: "个人介绍",controller: _introductionController,),
-          _editItem(iconData: Icons.business,labeltext: "行业",controller: _businessController,)
+          _EditItem(iconData: Icons.format_quote,labeltext: "一句话描述自己",controller: _descriptionController,),
+          _EditItem(iconData: Icons.assignment,labeltext: "个人介绍",controller: _introductionController,),
+          _EditItem(iconData: Icons.business,labeltext: "行业",controller: _businessController,)
         ],
       ),
     );
@@ -76,16 +86,24 @@ class EditPersonalProfilePage extends StatelessWidget{
                 Checkbox(
                   //是否允许三态
                   tristate: false,
-                  value:true ,
-                  onChanged:(bool newValue){},
+                  value:isCheck ,
+                  onChanged:(bool newValue){
+                    setState(() {
+                      isCheck = !isCheck;
+                    });
+                  },
                 ),
                 Gaps.hGap5,
                 Text("男"),
                 Gaps.hGap15,
                 Checkbox(
                   tristate: false,
-                  value: false,
-                  onChanged: (bool newValue){},
+                  value: !isCheck,
+                  onChanged: (bool newValue){
+                    setState(() {
+                      isCheck = !isCheck;
+                    });
+                  },
                 ),
                 Gaps.hGap5,
                 Text("女"),
@@ -98,12 +116,12 @@ class EditPersonalProfilePage extends StatelessWidget{
   }
 }
 
-class _editItem extends StatelessWidget {
+class _EditItem extends StatelessWidget {
   final IconData iconData;
   final String labeltext;
   final TextEditingController controller;
   //TODO:为什么命名参数不能以下划线开头
-  _editItem({@required this.iconData,@required this.labeltext, @required this.controller});
+  _EditItem({@required this.iconData,@required this.labeltext, @required this.controller});
   @override
   Widget build(BuildContext context) {
     return Container(

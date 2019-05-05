@@ -13,6 +13,7 @@ class _MyPageState extends State<MyPage> {
   SharedPreferences sharedPreferences;
   @override
   Widget build(BuildContext context) {
+    print("mypage build");
     return ListView(
       children: <Widget>[
         Card(
@@ -123,6 +124,7 @@ class _MyPageState extends State<MyPage> {
   void initState() {
     super.initState();
     _initAsync();
+    print(isLogin);
 
   }
 

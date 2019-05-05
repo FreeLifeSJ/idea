@@ -6,4 +6,3 @@ export 'university.dart';
 export 'imform.dart';
 export 'ask.dart';
 export 'search.dart';
-export 'login.dart';

@@ -38,7 +38,7 @@ class _IdeaScaffoldState extends State<IdeaScaffold> {
   }
   //TODO:针对内容较多的想法在这里作出调整
   Widget _buildTop(){
-    return IdeaItem(model: widget.model);
+    return IdeaItem(model: widget.model,isDetail: true,);
   }
   
   Widget _buildCommentList(){

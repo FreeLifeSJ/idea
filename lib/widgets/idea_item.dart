@@ -6,12 +6,18 @@ import 'package:gaozhongzhihu/page/idea_file/ideaScaffold.dart';
 //给另一个dart文件用 这里就不能定义成_IdeaItem了 不能定义成私有的了
 class IdeaItem extends StatelessWidget{
   final Idea model;
-  IdeaItem({this.model,Key key}):super(key:key);
+  //是不是想法详情页
+  final bool isDetail;
+  IdeaItem({this.model,this.isDetail=false,Key key,}):super(key:key);
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return InkWell(
-      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>IdeaScaffold(model: model,)));},
+      onTap: (){
+        if(!isDetail){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>IdeaScaffold(model: model,)));
+        }
+       },
       child:Container(
         decoration: BoxDecoration(
           color: Colors.white,
