@@ -11,6 +11,7 @@ class Answer{
   int thx_num;
   int comments_num;
   //以下属性并非数据表里的 根据移动端实际需要新增
+  String image_url;
   String question_content;
   String head_url;
   String content_abstract; //回答摘要 在首页显示，首页内容不直接拉取回答具体内容
@@ -18,7 +19,7 @@ class Answer{
 
   Answer.shouye({@required this.ans_id,@required this.is_anonymous,
   this.head_url,@required this.question_content,@required this.content_abstract,
-  this.praise_num = 0, this.comments_num = 0,this.user_name});
+  this.praise_num = 0, this.comments_num = 0,this.user_name,this.image_url,this.content});
   //实现获取用户头像的内容  这个功能放在哪里？？
   void getUserHeadImage(){}
 

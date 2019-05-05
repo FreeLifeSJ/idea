@@ -3,6 +3,11 @@ import 'page/index.dart';
 import 'page/mypage_file/index.dart';
 import 'page/notification_file/index.dart';
 import 'page/idea_file/index.dart';
+import 'page/splash_page.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'state_manange/redux.dart';
+import 'package:gaozhongzhihu/resources/resources_index.dart';
 import 'page/university_file/livepage.dart';
 import 'page/university_file/bookstorepage.dart';
 import 'page/university_file/alreadyboughtpage.dart';
@@ -15,36 +20,53 @@ import 'db/bookstore/bookdb.dart';
 //TODO:重新规划项目文件结构
 //TODO:设置可以切换不同主题的功能
 void main() => runApp(
-  new MaterialApp(
-    title: "gaozhongzhihu",
-    home: HomePage(),
-    initialRoute: '/login',
-    routes: {
-      '/login':(context)=>LoginPage(),
-      '/my_favorite':(context)=>MyFavoritePage(),
-      '/my_concern':(context)=>MyConcernPage(),
-      '/my_create':(context)=>MyCreatePage(),
-      '/settings':(context)=>SettingsPage(),
-      '/ask':(context)=>AskPage(),
-      '/search':(context)=>SearchPage(),
-      '/message':(context)=>MessagePage(),
-      '/notification_settings':(context)=>NotificationSettingsPage(),
-      '/idea_edit':(context)=>IdeaEditPage(),
-      '/live' :(context)=>LivePage(),
-      '/bookstore' :(context)=>DataTestPage(),
-      '/alreadybought' :(context)=>ABPage(),
-      '/learning' :(context)=>StudyLogPage(),
-    },
-    theme: _buildZhiHuTheme(),
-  )
+  MyApp()
 );
 
-ThemeData _buildZhiHuTheme(){
+class MyApp extends StatefulWidget{
+  @override
+  State createState() => MyAppState();
+}
+class MyAppState extends State<MyApp>{
+  final store = Store<IdeaState>(
+    appReducer,
+    initialState: IdeaState(Colours.app_main)
+  );
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return StoreProvider<IdeaState>(
+      store: store,
+      child: StoreBuilder<IdeaState>(builder: (context,store){
+        return MaterialApp(
+          title: "gaozhongzhihu",
+          home: SplashPage(),
+          //initialRoute: '/login',  不采用一进app就要求登录的方式 将SplashPage作为HomePage 然后进行代替
+          routes: {
+            '/login':(context)=>LoginPage(),
+            'homepage':(context)=>HomePage(),
+            '/my_favorite':(context)=>MyFavoritePage(),
+            '/my_concern':(context)=>MyConcernPage(),
+            '/my_create':(context)=>MyCreatePage(),
+            '/settings':(context)=>SettingsPage(),
+            '/ask':(context)=>AskPage(),
+            '/search':(context)=>SearchPage(),
+            '/message':(context)=>MessagePage(),
+            '/notification_settings':(context)=>NotificationSettingsPage(),
+            '/idea_edit':(context)=>IdeaEditPage(),
+          },
+          theme: _buildZhiHuTheme(store),
+        );
+      }),
+    );
+  }
+}
+ThemeData _buildZhiHuTheme(Store<IdeaState> store){
   ThemeData base = ThemeData.light();
   return base.copyWith(
     //紫色 高贵色 力量感 象征知识就是就是力量 知识是高贵的
-    primaryColor: Colors.deepPurple,
-    accentColor: Colors.green,//控制FloatingActionButton的颜色
+    primaryColor:store.state.themeColor ,
+    accentColor: store.state.themeColor,//控制FloatingActionButton的颜色
     scaffoldBackgroundColor: Colors.grey.shade100,
     buttonTheme: base.buttonTheme.copyWith(
       buttonColor: Colors.lightGreen,
