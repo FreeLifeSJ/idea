@@ -42,7 +42,7 @@ class _WanAndroidPage extends State<WanAndroidPage> with AutomaticKeepAliveClien
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: new Text("Live 互动分享，技能提升"),
+        title: new Text("知识分享，技能提升"),
       ),
       body: articalDatas.length == 0 ? new Center(child: new CircularProgressIndicator()):
       ListView.builder(
