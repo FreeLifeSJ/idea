@@ -109,7 +109,7 @@ class PageContentState extends State<PageContent> {
         children: [
           // 三个按钮块，两个分割线
           buildButtonPress(
-              Icons.offline_bolt, 'Live', '互动分享会', Colors.blue, '/live'),
+              Icons.offline_bolt, 'Live', '互动分享会', Colors.blue, '/wanandorid'),
           SizedBox(
             height: 50,
             width: 2,
@@ -352,7 +352,7 @@ class PageContentState extends State<PageContent> {
                 width: 20,
               ), // Row 内白色填充
               buildButtonPress(
-                  Icons.offline_bolt, 'Live 猜你喜欢', ' ', Colors.blue, '/live'),
+                  Icons.offline_bolt, 'Live 猜你喜欢', ' ', Colors.blue, '/wanandorid'),
             ],
           ),
           // 显示内容

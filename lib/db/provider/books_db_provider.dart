@@ -6,10 +6,6 @@ import '../sql_provider.dart';
 
 class BooksDbProvider extends BaseDbProvider {
 
-  final String name = 'books';
-
-  final String 
-
   @override
   tableName() {
     // TODO: implement tableName
