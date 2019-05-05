@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gaozhongzhihu/resources/storage_key.dart';
+import 'register.dart';
 
 Dio dio = new Dio();  //在其他的文件里面能用吗？
 class LoginPage extends StatefulWidget {
@@ -65,8 +68,7 @@ class LoginPageState extends State<LoginPage>{
             RaisedButton(
               child: Text("注册"),
               onPressed: (){
-                print("需要编写向服务器传输数据的代码");
-                register();
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterPage()));
               },
             )
           ],
@@ -76,12 +78,14 @@ class LoginPageState extends State<LoginPage>{
   }
 
   void login() async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.setBool(StorageKey.isLogin, true);
     String username = _userNameController.text;
     String password = _passwordController.text;
     print(username);
     print(password);
     Map<String,String> data = {"username":username,"password":password}; 
-    String uri="http://kahula.cn/myWeb/signup.php"; //不要忘记加上http
+    String uri="http://kahula.cn/myzhihu_api/signup.php"; //不要忘记加上http
     try{
       Response response = await dio.post(uri,data:{"username":username,"password":password});
      // Response response = await dio.request(uri,data: {"username":username,"password":password});
@@ -89,13 +93,12 @@ class LoginPageState extends State<LoginPage>{
       //Response response = await dio.get(uri);
       print(response.data);
       print(response.statusCode);
+      //TODO:加上判断 状态码是OK的话将isLogin设置成true
+      /*SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences.setBool(StorageKey.isLogin, true);*/
     }catch(e){
       print(e);
     }
   }
 
-
-  void register(){
-
-  }
 }

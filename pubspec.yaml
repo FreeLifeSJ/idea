@@ -16,12 +16,22 @@ dependencies:
   flutter:
     sdk: flutter
   dio: ^2.1.0
+  #Dart常用工具类库 https://github.com/Sky24n/common_utils
+  common_utils: ^1.1.1
+  shared_preferences: ^0.5.2
+  #以下两个引入redux状态管理
+  flutter_redux: ^0.5.3
+  rxdart: ^0.21.0
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  # swiper
+  # 第三方控件
   flutter_swiper: ^1.0.6 
+  # 数据库
+  path_provider: ^0.4.1
+  sqflite: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -42,6 +52,18 @@ flutter:
     - assets/light.jpg
     - images/userimage.jpg
     - assets/live.png
+    - images/splash_bg.png
+    - images/avatar1.jpg
+    - images/avatar2.jpg
+    - images/avatar3.jpg
+    - images/avatar4.jpg
+    - images/avatar5.jpg
+    - images/avatar6.jpg
+    - images/avatar7.jpg
+    - images/duanyou.png
+    - images/skytiger.png
+    - images/beatifulgirl.png
+    - images/mosthandsome.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

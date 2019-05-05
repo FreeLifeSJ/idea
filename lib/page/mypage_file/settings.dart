@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gaozhongzhihu/resources/storage_key.dart';
+import 'package:gaozhongzhihu/resources/resources_index.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:gaozhongzhihu/state_manange/redux.dart';
 
 class SettingsPage extends StatefulWidget{
 
@@ -27,6 +32,29 @@ class SettingsPageState extends State<SettingsPage>{
             ),
             textScaleFactor: 0.5,),
           ),*/
+          StoreBuilder<IdeaState>(
+            builder: (context,store){
+              return ExpansionTile(
+                title: Text("主题"),
+                children: <Widget>[
+                  Wrap(
+                    children:themeColorMap.keys.map((String key){
+                      Color value = themeColorMap[key];
+                      return InkWell(
+                        onTap: (){store.dispatch(RefreshColorAction(value));},
+                        child: Container(
+                          height: 36.0,
+                          width: 36.0,
+                          margin: EdgeInsets.all(5.0),
+                          color: value,
+                        ),
+                      );
+                    }).toList(),
+                  )
+                ],
+              );
+            },
+          ),
           ListTile(
             title: Text("基本设置",
               style: TextStyle(
@@ -74,18 +102,27 @@ class SettingsPageState extends State<SettingsPage>{
           ),
           Column(
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 10,bottom: 100),
-                child: Text("退出帐号",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 17
-                  ),),
+              GestureDetector(
+                onTap:_exit ,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10,bottom: 100),
+                  child: Text("退出帐号",
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 17
+                    ),),
+                ),
               )
             ],
           )
         ],
       ),
     );
+  }
+
+  void _exit() async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.setBool(StorageKey.isLogin, false);
+    Navigator.pop(context);  //用这句代码触发不了myPageUI的重新绘制
   }
 }
