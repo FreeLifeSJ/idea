@@ -62,7 +62,6 @@ class LoginPageState extends State<LoginPage>{
               child: Text("登录"),
               onPressed: (){
                 login();
-                Navigator.pop(context);//为什么不需要传入
               },
             ),
             RaisedButton(
@@ -85,14 +84,18 @@ class LoginPageState extends State<LoginPage>{
     print(username);
     print(password);
     Map<String,String> data = {"username":username,"password":password}; 
-    String uri="http://kahula.cn/myzhihu_api/signup.php"; //不要忘记加上http
+    String uri="http://kahula.cn/myzhihu_api/login/login.php";//不要忘记加上http
     try{
-      Response response = await dio.post(uri,data:{"username":username,"password":password});
+      //Response response = await dio.post(uri,data:{"username":username,"password":password});
      // Response response = await dio.request(uri,data: {"username":username,"password":password});
-     // Response response = await dio.get(uri,queryParameters: {"username":username,"password":password});
+      Response response = await dio.get(uri,queryParameters: {"username":username,"password":password});
       //Response response = await dio.get(uri);
       print(response.data);
       print(response.statusCode);
+      //TODO:
+      if(response.statusCode==200){
+        Navigator.pop(context);
+      }
       //TODO:加上判断 状态码是OK的话将isLogin设置成true
       /*SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
       await sharedPreferences.setBool(StorageKey.isLogin, true);*/

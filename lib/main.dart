@@ -8,6 +8,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'state_manange/redux.dart';
 import 'package:gaozhongzhihu/resources/resources_index.dart';
+import 'package:flustars/flustars.dart';
 import 'page/university_file/livepage.dart';
 import 'page/university_file/bookstorepage.dart';
 import 'page/university_file/alreadyboughtpage.dart';
@@ -33,6 +34,16 @@ class MyAppState extends State<MyApp>{
     appReducer,
     initialState: IdeaState(Colours.app_main)
   );
+ @override
+  void initState(){
+    super.initState();
+    _initAsync();
+  }
+
+  void _initAsync() async{
+    await SpUtil.getInstance();
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

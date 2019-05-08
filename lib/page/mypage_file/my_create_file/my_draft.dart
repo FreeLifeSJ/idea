@@ -13,7 +13,7 @@ class MyDraftState extends State<MyDraft>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Center(
-      child: Text("ffff"),
+      child: Text("暂无内容"),
     );
   }
 }
