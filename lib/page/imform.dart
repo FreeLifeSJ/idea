@@ -21,6 +21,9 @@ class _InformPageState extends State<InformPage>{
             leading: Icon(Icons.album,color: Colors.blue,),
             title: Text("私信",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
             trailing: Icon(Icons.arrow_forward),
+            onTap: (){
+              Navigator.pushNamed(context, '/chat');
+            },
           ) ,
         ),
         ListTile(

@@ -12,7 +12,9 @@ class _ChatMainPageState extends State<ChatMainPage> {
       appBar: new AppBar(
         title: new Text("私信"),
       ),
-      body: new Text("等待小哥开发"),
+      body: new Center(
+        child: new Text("等待小哥开发"),
+      ),
     );
   }
 }
