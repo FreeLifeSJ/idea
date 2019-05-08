@@ -13,7 +13,7 @@ class MyAnswerState extends State<MyAnswer>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Center(
-      child: Text("ggg"),
+      child: Text("暂无内容"),
     );
   }
 }

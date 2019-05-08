@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaozhongzhihu/resources/resources_index.dart';
 import 'package:gaozhongzhihu/model/answer.dart';
+import 'write_answer.dart';
 
 class AnswerScafflod extends StatelessWidget{
   final Answer model;
@@ -23,7 +24,7 @@ class AnswerScafflod extends StatelessWidget{
       ),
       body:ListView(
         children: <Widget>[
-          _buildTop(),
+          _buildTop(context),
           _buildCenter(),
         ],
       ) ,
@@ -32,7 +33,7 @@ class AnswerScafflod extends StatelessWidget{
     );
   }
 
-  Widget _buildTop(){
+  Widget _buildTop(BuildContext context){
     return Container(
       color: Colors.white,
       padding: EdgeInsets.only(top: 16,left: 16,right: 16,),
@@ -63,23 +64,22 @@ class AnswerScafflod extends StatelessWidget{
                 child: Container(
                   height: 50,
                   decoration: BoxDecoration(border: Border(right: BorderSide(color: Colours.divider,width: 0.33))),
-                  child: Align(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.person_add,color: Colors.blueAccent,),
-                        Gaps.hGap5,
-                        Text("邀请回答",style: TextStyles.blueBold,),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.person_add,color: Colors.blueAccent,),
+                      Gaps.hGap5,
+                      Text("邀请回答",style: TextStyles.blueBold,),
                       ],
-                    ),
-                    alignment: Alignment.center,
                   ),
                 ),
               ),
               Expanded(
                 flex: 1,
-                child: Container(
-                  child: Align(
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>WriteAnswerPage(model.question_content)));},
+                  child: Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -88,10 +88,9 @@ class AnswerScafflod extends StatelessWidget{
                         Text("写回答",style: TextStyles.blueBold,),
                       ],
                     ),
-                    alignment: Alignment.center,
                   ),
+                )
                 ),
-              ),
             ],
           )
         ],

@@ -13,7 +13,7 @@ class ConcernQuestionPageState extends State<ConcernQuestionPage>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Center(
-      child: Text("ddd"),
+      child: Text("暂无关注问题"),
     );
   }
 }

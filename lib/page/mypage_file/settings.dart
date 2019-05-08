@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flustars/flustars.dart';
 import 'package:gaozhongzhihu/resources/storage_key.dart';
 import 'package:gaozhongzhihu/resources/resources_index.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -14,8 +14,13 @@ class SettingsPage extends StatefulWidget{
 }
 
 class SettingsPageState extends State<SettingsPage>{
+  //TODO:真正的设置成省流模式和自动下载更新  在服务器那边实现
+  bool isAutoUpdate = false;
+  bool isSaveGPRS = false;
   @override
   Widget build(BuildContext context) {
+    isAutoUpdate = SpUtil.getBool(StorageKey.isAutoUpdate)??false;
+    isSaveGPRS = SpUtil.getBool(StorageKey.isSaveGPRS)??false;
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -63,16 +68,28 @@ class SettingsPageState extends State<SettingsPage>{
                 textScaleFactor: 0.8,
             ),
           ),
+          //TODO:设置成一个Slider
           ListTile(
             title: Text("字体大小"),
           ),
           ListTile(
             title: Text("省流量模式"),
             subtitle: Text("仅在Wi-Fi环境下才会自动加载图片"),
+            trailing: Switch(value: isSaveGPRS, onChanged:(newValue){
+              SpUtil.putBool(StorageKey.isSaveGPRS, newValue);
+              setState(() {
+                isSaveGPRS = newValue;
+              });
+                }),
           ),
           ListTile(
             title: Text("自动下载更新"),
             subtitle: Text("仅Wi-Fi下自动下载更新"),
+            trailing: Switch(value: isAutoUpdate, onChanged: (newValue){
+              SpUtil.putBool(StorageKey.isAutoUpdate, newValue);
+              setState(() {
+                isAutoUpdate = newValue;
+              });}),
           ),
           ListTile(
             title: Text("帐号设置",
@@ -120,9 +137,8 @@ class SettingsPageState extends State<SettingsPage>{
     );
   }
 
-  void _exit() async{
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setBool(StorageKey.isLogin, false);
+  void _exit(){
+    SpUtil.putBool(StorageKey.isLogin, false);
     Navigator.pop(context);  //用这句代码触发不了myPageUI的重新绘制
   }
 }

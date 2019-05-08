@@ -129,6 +129,24 @@ class _RegisterPageState extends State<RegisterPage> {
     print(sex);
     print(response.statusCode);
     print(response.data);
+    //TODO:跟后端交流
+    if(true){
+      showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return SimpleDialog(
+            children: <Widget>[
+              Container(
+                width: 60,
+                height: 40,
+                alignment: Alignment.center,
+                child: Text("注册成功",style: TextStyles.listTitle,),
+              )
+            ],
+          );
+        }
+      );
+    }
   }
 }
 

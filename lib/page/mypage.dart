@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gaozhongzhihu/resources/storage_key.dart';
 import 'mypage_file/edit_personal_profile.dart';
+import 'package:flustars/flustars.dart';
 
 class MyPage extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class _MyPageState extends State<MyPage> {
   SharedPreferences sharedPreferences;
   @override
   Widget build(BuildContext context) {
+    isLogin = SpUtil.getBool(StorageKey.isLogin)??false;
     print("mypage build");
     return ListView(
       children: <Widget>[
@@ -132,7 +134,7 @@ class _MyPageState extends State<MyPage> {
     );
   }
 
-  @override
+/*  @override
   void initState() {
     super.initState();
     _initAsync();
@@ -142,9 +144,11 @@ class _MyPageState extends State<MyPage> {
 
   void _initAsync() async{
     sharedPreferences = await SharedPreferences.getInstance();
-    isLogin = sharedPreferences.get(StorageKey.isLogin)??false;
+    setState(() {
+      isLogin = sharedPreferences.get(StorageKey.isLogin)??false;
+    });
     print(isLogin.toString());
-  }
+  }*/
 
   void _personTileOnTap(){
     if(isLogin){

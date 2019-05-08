@@ -13,7 +13,7 @@ class MyQuestionState extends State<MyQuestion>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Center(
-      child: Text("hhh"),
+      child: Text("去提问，让思维在碰撞中产生火花"),
     );
   }
 }
