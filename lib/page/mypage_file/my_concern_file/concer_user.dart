@@ -12,6 +12,6 @@ class ConcernUserPageState extends State<ConcernUserPage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Center(child: Text("aaa"),);
+    return Center(child: Text("暂无关注用户"),);
   }
 }

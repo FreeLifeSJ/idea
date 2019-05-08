@@ -21,6 +21,7 @@ class IdeaEditPageState extends State<IdeaEditPage>{
             icon: Icon(Icons.send),
             onPressed: (){
               print("向服务器传输想法数据");
+              Navigator.of(context).pop();
             },
           )
         ],
