@@ -109,7 +109,7 @@ class PageContentState extends State<PageContent> {
         children: [
           // 三个按钮块，两个分割线
           buildButtonPress(
-              Icons.offline_bolt, 'Live', '互动分享会', Colors.blue, '/wanandorid'),
+              Icons.offline_bolt, 'Live', '互动分享会', Colors.blue, '/wanandroid'),
           SizedBox(
             height: 50,
             width: 2,

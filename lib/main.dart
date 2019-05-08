@@ -68,7 +68,7 @@ class MyAppState extends State<MyApp>{
             '/notification_settings':(context)=>NotificationSettingsPage(),
             '/idea_edit':(context)=>IdeaEditPage(),
             '/bookstore':(context)=>BookStorePage(),
-            '/wanandorid':(context)=>WanAndroidPage(),
+            '/wanandroid':(context)=>WanAndroidPage(),
             '/chat':(context)=>ChatMainPage(),
           },
           theme: _buildZhiHuTheme(store),

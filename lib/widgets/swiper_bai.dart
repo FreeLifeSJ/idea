@@ -25,7 +25,10 @@ class SwiperWidgetState extends State<SwiperWidget> {
           control: new SwiperControl(),
           scrollDirection: Axis.horizontal,
           autoplay: true,
-          onTap: (index) => print('点击了第$index个'),
+          onTap: (index) {
+            print('点击了第$index个');
+            Navigator.pushNamed(context, '/wanandroid');
+          },
         ));
   }
 
