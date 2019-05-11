@@ -35,15 +35,25 @@ class PageContentState extends State<PageContent> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          new Text(
-            '查看更多',
-            style: TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w400,
-              color: Colors.blue.shade800,
+          new GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/wanandroid');
+            },
+            child: new Row(
+              children: <Widget>[
+                new Text(
+                  '查看更多',
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.blue.shade800,
+                  ),
+                ),
+                new Icon(Icons.keyboard_arrow_right,
+                    color: Colors.blue.shade800),
+              ],
             ),
           ),
-          new Icon(Icons.keyboard_arrow_right, color: Colors.blue.shade800),
         ],
       );
     }
@@ -336,6 +346,9 @@ class PageContentState extends State<PageContent> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(
+            height: 10,
+          ),
           new Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -343,19 +356,11 @@ class PageContentState extends State<PageContent> {
               SizedBox(
                 width: 20,
               ), // Row 内白色填充
-              buildButtonPress(
-                  Icons.offline_bolt, 'Live 猜你喜欢', ' ', Colors.blue, '/wanandorid'),
+              buildButtonPress(Icons.offline_bolt, 'Live 猜你喜欢', ' ',
+                  Colors.blue, '/wanandorid'),
             ],
           ),
           // 显示内容
-          SizedBox(
-            // 代开发填充
-            height: 450,
-            width: 400,
-            child: Container(
-              color: Colors.deepPurpleAccent,
-            ),
-          ),
           SizedBox(
             height: 20,
           ), // Row 内白色填充
