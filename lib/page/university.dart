@@ -315,14 +315,6 @@ class PageContentState extends State<PageContent> {
                 ],
               ),
               // 右上角倒计时
-              SizedBox(
-                // 代开发填充
-                height: 50,
-                width: 200,
-                child: Container(
-                  color: Colors.green,
-                ),
-              ),
             ],
           ),
           // 分隔

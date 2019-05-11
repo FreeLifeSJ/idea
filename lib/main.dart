@@ -15,7 +15,8 @@ import 'page/university_file/alreadyboughtpage.dart';
 import 'page/university_file/studylogpage.dart';
 import 'db/bookstore/bookdb.dart';
 import 'page/university_file/WanAndroidPage.dart';
-import 'page/chart_file/chartmainpage.dart';
+import 'page/chat_file/chatmainpage.dart';
+import 'page/chat_file/chat.dart';
 //TODO:建立Github分支  已ok
 //TODO:建立index.dart文件 避免过多import  已ok
 //TODO:进行网络功能类的定义和封装
@@ -70,6 +71,7 @@ class MyAppState extends State<MyApp>{
             '/bookstore':(context)=>BookStorePage(),
             '/wanandroid':(context)=>WanAndroidPage(),
             '/chat':(context)=>ChatMainPage(),
+            '/chatzhihu':(context)=>Chat(),
           },
           theme: _buildZhiHuTheme(store),
         );
