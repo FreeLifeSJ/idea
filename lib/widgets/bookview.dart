@@ -33,7 +33,8 @@ class BookView extends StatelessWidget {
             'https://img1.doubanio.com/view/subject/l/public/s29799269.jpg'
           ),
         ),
-        new Column(
+        Expanded(
+          child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,6 +82,8 @@ class BookView extends StatelessWidget {
             ),
           ],
         ),
+        ),
+        
       ],
     );
   }
