@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:gaozhongzhihu/resources/resources_index.dart';
+import 'package:flustars/flustars.dart';
 
 
 class RegisterPage extends StatefulWidget{
@@ -141,6 +142,19 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 40,
                 alignment: Alignment.center,
                 child: Text("注册成功",style: TextStyles.listTitle,),
+              ),
+              Container(
+                width: 60,
+                height: 40,
+                alignment: Alignment.bottomRight,
+                child: FlatButton(
+                    onPressed: (){
+                      SpUtil.putBool(StorageKey.isLogin, true);
+                      SpUtil.putString(StorageKey.username, username);
+                      Navigator.pushNamed(context, 'homepage');
+                    }, 
+                    child: Text("立即登录")
+                ),
               )
             ],
           );

@@ -11,9 +11,10 @@ class MyPage extends StatefulWidget {
 
 class _MyPageState extends State<MyPage> {
   bool isLogin = false;
-  SharedPreferences sharedPreferences;
+  String username;
   @override
   Widget build(BuildContext context) {
+    username = SpUtil.getString(StorageKey.username,defValue: "默认用户");
     isLogin = SpUtil.getBool(StorageKey.isLogin)??false;
     print("mypage build");
     return ListView(
@@ -24,7 +25,7 @@ class _MyPageState extends State<MyPage> {
             child:ListTile(
               leading: isLogin?CircleAvatar(backgroundImage: AssetImage("images/avatar4.jpg"),radius: 18,):
               Icon(Icons.person_pin,color: Colors.deepPurpleAccent,),
-              title: Text(isLogin?"神棍骚猴":"未登录"),
+              title: Text(isLogin?username:"未登录"),
               subtitle: isLogin?Text("修改个人资料"):null,
               onTap: _personTileOnTap,
             )
