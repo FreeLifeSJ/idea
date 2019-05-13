@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gaozhongzhihu/resources/resources_index.dart';
 import 'package:gaozhongzhihu/model/answer.dart';
 import 'write_answer.dart';
+import 'package:flustars/flustars.dart';
+import 'package:gaozhongzhihu/resources/resources_index.dart';
 
 class AnswerScafflod extends StatelessWidget{
   final Answer model;
@@ -190,18 +192,39 @@ class _BottomSheetItem extends StatefulWidget {
 }
 
 class __BottomSheetItemState extends State<_BottomSheetItem> {
+  bool isLogin;
   bool isTap = false;
   @override
   Widget build(BuildContext context) {
+    isLogin = SpUtil.getBool(StorageKey.isLogin,defValue: false);
     return GestureDetector(
       onTap: (){
-        setState(() {
-          if(isTap == false){
-            isTap =true;
-          }else{
-            isTap = false;
-          }
-        });
+        if(isLogin){
+          setState(() {
+            if(isTap == false){
+              isTap =true;
+            }else{
+              isTap = false;
+            }
+          });
+        }else{
+          showDialog(
+            context: context,
+            builder:(context){
+              return SimpleDialog(
+                children: <Widget>[
+                  Container(
+                    width: 60,
+                    height: 40,
+                    alignment: Alignment.center,
+                    child: Text("请登录",style: TextStyles.listTitle,),
+                  )
+                ],
+              );
+            }
+          );
+        }
+       
       },
       child: Container(
         width: 40,
@@ -224,18 +247,39 @@ class _BottomSheetItemLeft extends StatefulWidget {
 }
 
 class __BottomSheetItemLeftState extends State<_BottomSheetItemLeft> {
+  bool isLogin;
   bool isTap = false;
   @override
   Widget build(BuildContext context) {
+    isLogin = SpUtil.getBool(StorageKey.isLogin,defValue: false);
     return GestureDetector(
       onTap: (){
-        setState(() {
-          if(isTap==false){
-            isTap = true;
-          }else{
-            isTap = false;
-          }
-        });
+        if(isLogin){
+          setState(() {
+            if(isTap==false){
+              isTap = true;
+            }else{
+              isTap = false;
+            }
+          });
+        }else{
+          showDialog(
+              context: context,
+              builder:(context){
+                return SimpleDialog(
+                  children: <Widget>[
+                    Container(
+                      width: 60,
+                      height: 40,
+                      alignment: Alignment.center,
+                      child: Text("请登录",style: TextStyles.listTitle,),
+                    )
+                  ],
+                );
+              }
+          );
+        }
+
       },
       child: Container(
         padding:EdgeInsets.symmetric(horizontal: 10,vertical: 5) ,
@@ -262,18 +306,38 @@ class _BottomSheetItemLeft2 extends StatefulWidget {
 }
 
 class __BottomSheetItemLeft2State extends State<_BottomSheetItemLeft2> {
+  bool isLogin;
   bool isTap = false;
   @override
   Widget build(BuildContext context) {
+    isLogin = SpUtil.getBool(StorageKey.isLogin,defValue: false);
     return GestureDetector(
       onTap: (){
-        setState(() {
-          if(isTap==false){
-            isTap = true;
-          }else{
-            isTap = false;
-          }
-        });
+        if(isLogin){
+          setState(() {
+            if(isTap==false){
+              isTap = true;
+            }else{
+              isTap = false;
+            }
+          });
+        }else{
+          showDialog(
+              context: context,
+              builder:(context){
+                return SimpleDialog(
+                  children: <Widget>[
+                    Container(
+                      width: 60,
+                      height: 40,
+                      alignment: Alignment.center,
+                      child: Text("请登录",style: TextStyles.listTitle,),
+                    )
+                  ],
+                );
+              }
+          );
+        }
       },
       child: Container(
         padding:EdgeInsets.symmetric(horizontal: 5,vertical: 3.5) ,

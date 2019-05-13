@@ -3,6 +3,9 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gaozhongzhihu/resources/storage_key.dart';
 import 'register.dart';
+import 'package:gaozhongzhihu/resources/resources_index.dart';
+import 'dynamic_login.dart';
+
 
 Dio dio = new Dio();  //在其他的文件里面能用吗？
 class LoginPage extends StatefulWidget {
@@ -28,6 +31,17 @@ class LoginPageState extends State<LoginPage>{
     return ListView(
       padding: EdgeInsets.all(16.0),
       children: <Widget>[
+        Align(
+          //TODO
+          alignment: Alignment.topRight,
+          child: FlatButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>DynamicLogin()));
+              },
+              child: Text("动态登录"),
+              textColor: Colors.blueAccent,
+          ),
+        ),
         SizedBox(height: 80,),
         Column(
           children: <Widget>[
@@ -94,6 +108,7 @@ class LoginPageState extends State<LoginPage>{
       print(response.statusCode);
       //TODO:
       if(response.statusCode==200){
+        await sharedPreferences.setString(StorageKey.username, _userNameController.text);
         Navigator.pop(context);
       }
       //TODO:加上判断 状态码是OK的话将isLogin设置成true
