@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
 import '../style/gsy_style.dart';
+import '../bai/model/book_model.dart';
 
 class BookView extends StatelessWidget {
 
-  final String b_title;
-  final String b_author;
-  final String b_summary;
-  final String b_cost;
-  final String b_grade;
-  final String b_view;
+  BookModel book;
 
   BookView(
-    {@required this.b_title,
-    @required this.b_author,
-    @required this.b_summary,
-    @required this.b_cost,
-    @required this.b_grade,
-    @required this.b_view}
+    {@required this.book}
   );
 
   ///返回书籍卡片
   _getBookItem() {
+    print(book.b_url);
     return new Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
@@ -30,7 +22,7 @@ class BookView extends StatelessWidget {
           width: 100,
           height: 100,
           child: Image.network(
-            'https://img1.doubanio.com/view/subject/l/public/s29799269.jpg'
+            book.b_url
           ),
         ),
         Expanded(
@@ -43,7 +35,7 @@ class BookView extends StatelessWidget {
               width: 250.0,
               height: 25.0,
               child: new Text(
-                ' 标题：' + b_title,
+                ' 标题：' + book.b_title,
                 style: new TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
@@ -56,7 +48,7 @@ class BookView extends StatelessWidget {
               width: 250.0,
               height: 25,
               child: new Text(
-                ' 作者：' +  b_author,
+                ' 作者：' +  book.b_author,
                 // softWrap: false,
                 overflow: TextOverflow.ellipsis,
                 style: new TextStyle(
@@ -70,7 +62,7 @@ class BookView extends StatelessWidget {
               width: 250.0,
               height: 25,
               child: new Text(
-                ' 简介：' + b_summary,
+                ' 简介：' + book.b_summary,
                 // softWrap: false,
                 overflow: TextOverflow.ellipsis,
                 style: new TextStyle(
@@ -155,9 +147,9 @@ class BookView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       //crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        _getBottomItem(Colors.grey,'阅读：'+ b_view),
-                        _getBottomItem(Colors.grey, '评分：'+ b_grade),
-                        _getBottomItem(Colors.red, '价格：'+ b_cost),
+                        _getBottomItem(Colors.grey,'阅读：'+ book.b_view),
+                        _getBottomItem(Colors.grey, '评分：'+ book.b_grade),
+                        _getBottomItem(Colors.red, '价格：'+ book.b_cost),
                       ],
                     ),
                   ],
