@@ -244,7 +244,7 @@ class PageContentState extends State<PageContent> {
             height: 20,
           ), // 白色填充
           new Text(
-            '展示一个已购内容',
+            '暂无已购内容',
             style: new TextStyle(
               color: Colors.grey[500],
             ),
@@ -317,7 +317,7 @@ class PageContentState extends State<PageContent> {
             height: 20,
           ), // 白色填充
           new Text(
-            '展示一条学习记录',
+            '暂无学习记录',
             style: new TextStyle(
               color: Colors.grey[500],
             ),
@@ -364,9 +364,22 @@ class PageContentState extends State<PageContent> {
                 ],
               ),
               // 右上角倒计时
+              Container(
+                child: new Text(
+                  "￥" + book.b_cost,
+                  style: new TextStyle(color: Colors.red, fontSize: 15.0),
+                ),
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              // 分隔
             ],
           ),
           // 分隔
+          SizedBox(
+            height: 10,
+          ),
           SizedBox(
             height: 3,
             child: Container(
@@ -432,6 +445,70 @@ class PageContentState extends State<PageContent> {
                   color: Colors.grey.shade200,
                 ),
               ),
+              todaySpecial, // 4.
+              // 分隔
+              SizedBox(
+                height: 5,
+                child: Container(
+                  color: Colors.grey.shade200,
+                ),
+              ),
+
+              new Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  new SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: Image.network(book.b_url),
+                  ),
+                  Expanded(
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        new Container(
+                          width: 250.0,
+                          height: 25.0,
+                          child: new Text(
+                            ' 标题：' + book.b_title,
+                            style: new TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        new Container(
+                          width: 250.0,
+                          height: 25,
+                          child: new Text(
+                            ' 作者：' + book.b_author,
+                            // softWrap: false,
+                            overflow: TextOverflow.ellipsis,
+                            style: new TextStyle(
+                              fontSize: 12.0,
+                              // fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+                child: Container(
+                  color: Colors.grey.shade200,
+                ),
+              ),
               new GestureDetector(
                 child: alreadyLearnSection, // 3.5
                 onTap: () {
@@ -457,17 +534,6 @@ class PageContentState extends State<PageContent> {
                 child: Container(
                   color: Colors.grey.shade200,
                 ),
-              ),
-              todaySpecial, // 4.
-              // 分隔
-              SizedBox(
-                height: 5,
-                child: Container(
-                  color: Colors.grey.shade200,
-                ),
-              ),
-              new BookView(
-                book: book,
               ),
               //dispalyLive,
               seeMore(),
