@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
-const String defaultUserName = "NeandNi"; //用户名
+const String defaultUserName = "Me"; //用户名
 
 class Chat extends StatefulWidget {
   @override
