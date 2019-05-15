@@ -18,6 +18,7 @@ import 'page/university_file/WanAndroidPage.dart';
 import 'page/chat_file/chatmainpage.dart';
 import 'page/chat_file/chat.dart';
 import 'bai/network.dart';
+import 'page/university_file/viewbookpage.dart';
 //TODO:建立Github分支  已ok
 //TODO:建立index.dart文件 避免过多import  已ok
 //TODO:进行网络功能类的定义和封装
@@ -73,7 +74,7 @@ class MyAppState extends State<MyApp>{
             '/wanandroid':(context)=>WanAndroidPage(),
             '/chat':(context)=>ChatMainPage(),
             '/chatzhihu':(context)=>Chat(),
-            '/networktest':(context)=>NetworkAppPage(),
+            '/networktest':(context)=>ViewBookPage(),
             // '/learning'
             // '/alreadybought'
           },

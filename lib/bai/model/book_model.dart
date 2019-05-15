@@ -22,6 +22,7 @@ class BookModelList {
 
 class BookModel{
 
+  final String isbn;
   final String b_title;
   final String b_author;
   final String b_summary;
@@ -30,10 +31,11 @@ class BookModel{
   final String b_view;
   final String b_url;
 
-  const BookModel({this.b_title,this.b_author,this.b_summary,this.b_cost,this.b_grade,this.b_view,this.b_url});
+  const BookModel({this.isbn,this.b_title,this.b_author,this.b_summary,this.b_cost,this.b_grade,this.b_view,this.b_url});
 
   factory BookModel.fromJson(Map<String, dynamic> json) {
     return new BookModel(
+      isbn: json['book_id'],
       b_title: json['title'],
       b_author: json['author'],
       b_summary: json['intro'],
