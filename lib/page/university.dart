@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../widgets/swiper_bai.dart';
 import '../bai/model/book_model.dart';
+import 'university_file/viewbookpage.dart';
 
 class UniversityPage extends StatelessWidget {
   @override
@@ -37,13 +39,16 @@ class PageContentState extends State<PageContent> {
   var dio_url = 'http://kahula.cn/grh/bookandlive/listen.php';
   String _result = 'success';
   BookModel book = null;
+
   Dio dio = new Dio();
+
+  int isbn = Random().nextInt(10) + 1;
 
   _getOneBook() async {
     try {
       Response response = await dio.get(dio_url, queryParameters: {
         "order": "sbidb",
-        "bi": 3,
+        "bi": isbn.toString(),
       });
       if (response.statusCode == HttpStatus.OK) {
         //decodebook(response.data);
@@ -57,7 +62,7 @@ class PageContentState extends State<PageContent> {
       print(exception);
       _result = '网络异常';
     }
-    print('get book 3 ${_result}');
+    print('get book ${isbn} ${_result}');
     setState(() {});
   }
 
@@ -328,68 +333,6 @@ class PageContentState extends State<PageContent> {
         ],
       ),
     );
-    // 实现 4
-    Widget todaySpecial = new Container(
-      child: new Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          // 第一行内容，分为两列
-          new Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // 左上角标题
-              new Column(
-                children: [
-                  SizedBox(
-                    height: 10,
-                  ), // 白色填充
-                  new Text(
-                    '今日优惠     ', // 使用空格进行填充对齐，可能会出问题
-                    style: new TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
-                    ),
-                  ),
-                  new Text(
-                    '       精选内容  限时特价  ', // 使用空格进行填充对齐，可能会出问题
-                    style: new TextStyle(
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-              // 右上角倒计时
-              Container(
-                child: new Text(
-                  "￥" + book.b_cost,
-                  style: new TextStyle(color: Colors.red, fontSize: 15.0),
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              // 分隔
-            ],
-          ),
-          // 分隔
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 3,
-            child: Container(
-              color: Colors.grey.shade200,
-            ),
-          ),
-          // 第二行内容，ListView 构建10个优惠内容
-        ],
-      ),
-    );
     // 实现 5
     // 标题：图标 文字
     // 内容：四个结构一样的 “卡片”
@@ -445,7 +388,70 @@ class PageContentState extends State<PageContent> {
                   color: Colors.grey.shade200,
                 ),
               ),
-              todaySpecial, // 4.
+              // todaySpecial
+              // 实现 4
+              new Container(
+                child: new Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    // 第一行内容，分为两列
+                    new Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // 左上角标题
+                        new Column(
+                          children: [
+                            SizedBox(
+                              height: 10,
+                            ), // 白色填充
+                            new Text(
+                              '今日优惠     ', // 使用空格进行填充对齐，可能会出问题
+                              style: new TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black,
+                              ),
+                            ),
+                            new Text(
+                              '       精选内容  限时特价  ', // 使用空格进行填充对齐，可能会出问题
+                              style: new TextStyle(
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                        // 右上角倒计时
+                        Container(
+                          child: new Text(
+                            "￥" + book.b_cost,
+                            style: new TextStyle(
+                                color: Colors.red, fontSize: 15.0),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        // 分隔
+                      ],
+                    ),
+                    // 分隔
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 3,
+                      child: Container(
+                        color: Colors.grey.shade200,
+                      ),
+                    ),
+                    // 第二行内容，ListView 构建10个优惠内容
+                  ],
+                ),
+              ),
               // 分隔
               SizedBox(
                 height: 5,
@@ -453,55 +459,64 @@ class PageContentState extends State<PageContent> {
                   color: Colors.grey.shade200,
                 ),
               ),
-
-              new Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  new SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: Image.network(book.b_url),
-                  ),
-                  Expanded(
-                    child: new Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        new Container(
-                          width: 250.0,
-                          height: 25.0,
-                          child: new Text(
-                            ' 标题：' + book.b_title,
-                            style: new TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        new Container(
-                          width: 250.0,
-                          height: 25,
-                          child: new Text(
-                            ' 作者：' + book.b_author,
-                            // softWrap: false,
-                            overflow: TextOverflow.ellipsis,
-                            style: new TextStyle(
-                              fontSize: 12.0,
-                              // fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ],
+              new GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (BuildContext context) {
+                    return new ViewBookPage(
+                      isbn: book.isbn,
+                    );
+                  }));
+                },
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    new SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: Image.network(book.b_url),
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: new Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          new Container(
+                            width: 250.0,
+                            height: 25.0,
+                            child: new Text(
+                              ' 标题：' + book.b_title,
+                              style: new TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          new Container(
+                            width: 250.0,
+                            height: 25,
+                            child: new Text(
+                              ' 作者：' + book.b_author,
+                              // softWrap: false,
+                              overflow: TextOverflow.ellipsis,
+                              style: new TextStyle(
+                                fontSize: 12.0,
+                                // fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 10,
