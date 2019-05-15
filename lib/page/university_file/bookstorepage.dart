@@ -5,7 +5,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:gaozhongzhihu/bai/model/book_model.dart';
 import '../../widgets/bookview.dart';
-import '../../bai/httpget/getbook.dart';
 
 
 class BookStorePage extends StatefulWidget {

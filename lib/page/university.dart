@@ -1,6 +1,13 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import '../widgets/bookview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../widgets/swiper_bai.dart';
+import '../bai/model/book_model.dart';
 
 class UniversityPage extends StatelessWidget {
   @override
@@ -27,6 +34,38 @@ class PageContent extends StatefulWidget {
 //  4. 今日优惠
 //  5. Live 猜你喜欢
 class PageContentState extends State<PageContent> {
+  var dio_url = 'http://kahula.cn/grh/bookandlive/listen.php';
+  String _result = 'success';
+  BookModel book = null;
+  Dio dio = new Dio();
+
+  _getOneBook() async {
+    try {
+      Response response = await dio.get(dio_url, queryParameters: {
+        "order": "sbidb",
+        "bi": 3,
+      });
+      if (response.statusCode == HttpStatus.OK) {
+        //decodebook(response.data);
+        Map bookmap = json.decode(response.data);
+        book = BookModel.fromJson(bookmap);
+        //books.add(book);
+      } else {
+        _result = 'error code : ${response.statusCode}';
+      }
+    } catch (exception) {
+      print(exception);
+      _result = '网络异常';
+    }
+    print('get book 3 ${_result}');
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    _getOneBook();
+  }
+
   @override
   Widget build(BuildContext context) {
     // 封装 查看更多
@@ -127,7 +166,7 @@ class PageContentState extends State<PageContent> {
               color: Colors.grey.shade200,
             ),
           ),
-          buildButtonPress(Icons.collections_bookmark, '书店', '精品电子书',
+          buildButtonPress(Icons.collections_bookmark, '书店', '全部电子书',
               Colors.green, '/bookstore'),
           SizedBox(
             height: 50,
@@ -372,71 +411,79 @@ class PageContentState extends State<PageContent> {
       ),
     );
     // 整合
-    return new ListView(
-      children: [
-        // 1.
-        /*
+
+    return book == null
+        ? new Center(child: new CircularProgressIndicator())
+        : new ListView(
+            children: [
+              // 1.
+              /*
           new Image.asset(
             'assets/live.png',
             height: 160.0,
             fit: BoxFit.fitWidth,
           ),*/
-        new SwiperWidget(),
-        buttonSection, // 2.
-        // 分隔
-        SizedBox(
-          height: 10,
-          child: Container(
-            color: Colors.grey.shade200,
-          ),
-        ),
-        new GestureDetector(
-          child: alreadyLearnSection, // 3.5
-          onTap: () {
-            Navigator.pushNamed(context, '/learning');
-          },
-        ),
-        // 分隔
-        SizedBox(
-          height: 10,
-          child: Container(
-            color: Colors.grey.shade200,
-          ),
-        ),
-        new GestureDetector(
-          child: alreadyBoughtSection, // 3.,
-          onTap: () {
-            Navigator.pushNamed(context, '/alreadybought');
-          },
-        ),
-        // 分隔
-        SizedBox(
-          height: 10,
-          child: Container(
-            color: Colors.grey.shade200,
-          ),
-        ),
-        todaySpecial, // 4.
-        // 分隔
-        SizedBox(
-          height: 10,
-          child: Container(
-            color: Colors.grey.shade200,
-          ),
-        ),
-        dispalyLive,
-        Padding(
-          padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-          child: new RaisedButton(
-              textColor: Colors.black,
-              child: new Text('networktesting'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/networktest');
-              }),
-        ),
-        //
-        //
-      ],
-    );
+              new SwiperWidget(),
+              buttonSection, // 2.
+              // 分隔
+              SizedBox(
+                height: 10,
+                child: Container(
+                  color: Colors.grey.shade200,
+                ),
+              ),
+              new GestureDetector(
+                child: alreadyLearnSection, // 3.5
+                onTap: () {
+                  Navigator.pushNamed(context, '/learning');
+                },
+              ),
+              // 分隔
+              SizedBox(
+                height: 10,
+                child: Container(
+                  color: Colors.grey.shade200,
+                ),
+              ),
+              new GestureDetector(
+                child: alreadyBoughtSection, // 3.,
+                onTap: () {
+                  Navigator.pushNamed(context, '/alreadybought');
+                },
+              ),
+              // 分隔
+              SizedBox(
+                height: 10,
+                child: Container(
+                  color: Colors.grey.shade200,
+                ),
+              ),
+              todaySpecial, // 4.
+              // 分隔
+              SizedBox(
+                height: 5,
+                child: Container(
+                  color: Colors.grey.shade200,
+                ),
+              ),
+              new BookView(
+                book: book,
+              ),
+              //dispalyLive,
+              seeMore(),
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+                child: new RaisedButton(
+                    textColor: Colors.black,
+                    child: new Text('networktesting'),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/networktest');
+                    }),
+              ),
+              //
+              //
+            ],
+          );
   }
 }
