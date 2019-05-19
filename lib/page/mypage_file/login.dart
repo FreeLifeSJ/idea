@@ -5,6 +5,9 @@ import 'package:gaozhongzhihu/resources/storage_key.dart';
 import 'register.dart';
 import 'package:gaozhongzhihu/resources/resources_index.dart';
 import 'dynamic_login.dart';
+import 'dart:convert';
+import 'package:gaozhongzhihu/model/user.dart';
+import 'package:flustars/flustars.dart';
 
 
 Dio dio = new Dio();  //在其他的文件里面能用吗？
@@ -95,8 +98,8 @@ class LoginPageState extends State<LoginPage>{
     await sharedPreferences.setBool(StorageKey.isLogin, true);
     String username = _userNameController.text;
     String password = _passwordController.text;
-    print(username);
-    print(password);
+/*    print(username);
+    print(password);*/
     Map<String,String> data = {"username":username,"password":password}; 
     String uri="http://kahula.cn/myzhihu_api/login/login.php";//不要忘记加上http
     try{
@@ -104,11 +107,17 @@ class LoginPageState extends State<LoginPage>{
      // Response response = await dio.request(uri,data: {"username":username,"password":password});
       Response response = await dio.get(uri,queryParameters: {"username":username,"password":password});
       //Response response = await dio.get(uri);
-      print(response.data);
+     // print(response.data);
       print(response.statusCode);
+      Map<String,dynamic> userMap = json.decode(response.data);
+      var user = User.fromJson(userMap);
+      print(user.user_name);
+      print(user.user_id);
       //TODO:
       if(response.statusCode==200){
-        await sharedPreferences.setString(StorageKey.username, _userNameController.text);
+       // await sharedPreferences.setString(StorageKey.username, _userNameController.text);
+        SpUtil.putString(StorageKey.username, user.user_name);
+        SpUtil.putString(StorageKey.user_id, user.user_id);
         Navigator.pop(context);
       }
       //TODO:加上判断 状态码是OK的话将isLogin设置成true

@@ -39,9 +39,9 @@ List<String> headUrls =const[
   "images/avatar7.jpg",
 ];
 
-List<int> supportsnum = const[1000,2001,1997,2019,300,4009,4563];
+List<String> supportsnum = const["1000","2001","1997","2019","300","4009","4563"];
 
-List<int> commentsnum = const[50,200,30,34,55,66,286];
+List<String> commentsnum = const["50","200","30","34","55","66","286"];
 
 
 List<String> ideaContents = const[

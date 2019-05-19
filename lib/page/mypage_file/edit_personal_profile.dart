@@ -22,6 +22,12 @@ class _EditPersonalProfilePageState extends State<EditPersonalProfilePage>{
     return Scaffold(
       appBar: AppBar(
         title: Text("编辑个人资料"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.send),
+            onPressed: (){},
+          )
+        ],
       ),
       body:_buildBody(),
     );

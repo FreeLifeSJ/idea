@@ -13,4 +13,6 @@ class Question{
   Question({@required this.question_id,this.author_id,this.is_anonymous,
       this.comments_num=0,this.follower_num=0,@required this.title,
   this.content,this.answer_num=0});
+
+
 }

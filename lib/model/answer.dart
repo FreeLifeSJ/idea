@@ -7,9 +7,9 @@ class Answer{
   int author_id;
   bool is_anonymous;
   String content;
-  int praise_num;
+  String praise_num;
   int thx_num;
-  int comments_num;
+  String comments_num;
   //以下属性并非数据表里的 根据移动端实际需要新增
   String image_url;
   String question_content;
@@ -19,8 +19,16 @@ class Answer{
 
   Answer.shouye({@required this.ans_id,@required this.is_anonymous,
   this.head_url,@required this.question_content,@required this.content_abstract,
-  this.praise_num = 0, this.comments_num = 0,this.user_name,this.image_url,this.content});
+  this.praise_num = "0", this.comments_num = "0",this.user_name,this.image_url,this.content});
   //实现获取用户头像的内容  这个功能放在哪里？？
   void getUserHeadImage(){}
+
+  Answer.fromJson(Map<String,dynamic> json)
+      : user_name = "yyh",
+        head_url = "images/avatar4.jpg",
+        question_content = json["title"],
+        comments_num = json["comments_num"],
+        praise_num = json["follower_num"],
+        content_abstract = "暂无回答，等待您的精彩回答";
 
 }
